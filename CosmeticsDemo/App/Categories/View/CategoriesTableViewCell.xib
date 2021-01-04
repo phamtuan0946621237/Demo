@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoriesTableViewCell" id="KGk-i7-Jjw" customClass="CategoriesTableViewCell" customModule="CosmeticsDemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KQE-pF-WGL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nHV-9m-a6b">
+                                <rect key="frame" x="16" y="16" width="288" height="84"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tuhai.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="t89-9d-b3V">
+                                        <rect key="frame" x="16" y="12" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="inr-bU-1nw"/>
+                                            <constraint firstAttribute="height" constant="60" id="zOT-Gk-SNS"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RTu-yH-xQf">
+                                        <rect key="frame" x="92" y="16" width="180" height="56"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVU-zc-vbZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="180" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JlQ-II-FG2">
+                                                <rect key="frame" x="0.0" y="35" width="180" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" systemColor="systemYellowColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="JlQ-II-FG2" firstAttribute="leading" secondItem="RTu-yH-xQf" secondAttribute="leading" id="CYG-Xz-xgr"/>
+                                            <constraint firstItem="fVU-zc-vbZ" firstAttribute="top" secondItem="RTu-yH-xQf" secondAttribute="top" id="FCI-NY-Dpz"/>
+                                            <constraint firstAttribute="trailing" secondItem="JlQ-II-FG2" secondAttribute="trailing" id="WZE-Vs-EZd"/>
+                                            <constraint firstItem="fVU-zc-vbZ" firstAttribute="leading" secondItem="RTu-yH-xQf" secondAttribute="leading" id="aD0-Hy-eXp"/>
+                                            <constraint firstAttribute="bottom" secondItem="JlQ-II-FG2" secondAttribute="bottom" id="iIb-Qx-22r"/>
+                                            <constraint firstAttribute="trailing" secondItem="fVU-zc-vbZ" secondAttribute="trailing" id="zIZ-bj-KGN"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="t89-9d-b3V" firstAttribute="leading" secondItem="nHV-9m-a6b" secondAttribute="leading" constant="16" id="7TO-BT-x4E"/>
+                                    <constraint firstItem="t89-9d-b3V" firstAttribute="centerY" secondItem="nHV-9m-a6b" secondAttribute="centerY" id="OAN-Me-Gfs"/>
+                                    <constraint firstItem="RTu-yH-xQf" firstAttribute="top" secondItem="nHV-9m-a6b" secondAttribute="top" constant="16" id="Zsv-dk-TlJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="RTu-yH-xQf" secondAttribute="trailing" constant="16" id="fPx-Mo-b9N"/>
+                                    <constraint firstAttribute="bottom" secondItem="RTu-yH-xQf" secondAttribute="bottom" constant="12" id="jL4-l8-J2o"/>
+                                    <constraint firstItem="RTu-yH-xQf" firstAttribute="leading" secondItem="t89-9d-b3V" secondAttribute="trailing" constant="16" id="raS-94-e4q"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.66673424689746597" green="0.87201902624855809" blue="1" alpha="0.25684931506849318" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="Cvc-zy-vsI"/>
+                            <constraint firstItem="nHV-9m-a6b" firstAttribute="top" secondItem="KQE-pF-WGL" secondAttribute="top" constant="16" id="SxV-CG-wOT"/>
+                            <constraint firstItem="nHV-9m-a6b" firstAttribute="leading" secondItem="KQE-pF-WGL" secondAttribute="leading" constant="16" id="ghM-vq-QaM"/>
+                            <constraint firstAttribute="trailing" secondItem="nHV-9m-a6b" secondAttribute="trailing" constant="16" id="nof-kq-yGm"/>
+                            <constraint firstAttribute="bottom" secondItem="nHV-9m-a6b" secondAttribute="bottom" id="pNe-jt-RXh"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="KQE-pF-WGL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="1cN-uq-5Z8"/>
+                    <constraint firstAttribute="bottom" secondItem="KQE-pF-WGL" secondAttribute="bottom" id="GVG-M7-vid"/>
+                    <constraint firstAttribute="trailing" secondItem="KQE-pF-WGL" secondAttribute="trailing" id="NJX-pd-U5K"/>
+                    <constraint firstItem="KQE-pF-WGL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Tz4-cz-Aj6"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="icon" destination="t89-9d-b3V" id="CsT-Xy-nJt"/>
+                <outlet property="layoutView" destination="nHV-9m-a6b" id="GXv-7H-tdU"/>
+                <outlet property="name" destination="fVU-zc-vbZ" id="Zyl-WB-hcw"/>
+                <outlet property="time" destination="JlQ-II-FG2" id="2Wd-Vo-7so"/>
+            </connections>
+            <point key="canvasLocation" x="-33.333333333333336" y="75"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="tuhai.jpg" width="1950" height="1950"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

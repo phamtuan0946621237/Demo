@@ -1,4 +1,4 @@
-framework module Pods_CosmeticsDemo {
+module Pods_CosmeticsDemo {
   umbrella header "Pods-CosmeticsDemo-umbrella.h"
 
   export *

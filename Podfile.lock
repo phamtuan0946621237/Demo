@@ -1,16 +1,20 @@
 PODS:
   - Alamofire (5.4.1)
+  - CardSlider (0.1.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
+  - CardSlider
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - CardSlider
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  CardSlider: 0a8f5f17f5a76701771794b07fdaeddc512358c8
 
-PODFILE CHECKSUM: 7836a8e12343c05447f189e84391c504b251e535
+PODFILE CHECKSUM: a5c81c8406281feb7bdc1a391f440a1ad40d015d
 
 COCOAPODS: 1.9.3
