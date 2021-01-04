@@ -113,9 +113,16 @@ extension TrademarkViewController {
             cell.icon.image = UIImage(named: "tuhai.jpg")
         }
         cell.icon.image = UIImage(named: "cochacyeuladay.jpg")
-        cell.titleTradeMark.text = item["name"] as! String
+        cell.titleTradeMark.text = (item["name"] as! String)
 //        }
         return cell
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.row)
+            let vc = storyboard?.instantiateViewController(withIdentifier: "ProductViewController") as? ProductViewController
+            self.navigationController?.pushViewController(vc!, animated: true)
+        
+    }
+    
     
 }

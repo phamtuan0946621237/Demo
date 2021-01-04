@@ -74,8 +74,8 @@ class LoginViewController: UIViewController {
 }
     // action
     @IBAction func onClickLogin(_ sender: Any) {
-        dataAPI(email: inputEmail.text! as String,passwork: inputPass.text! as String)
-//        dataAPI(email: "phamtuannd200997@gmail.com",passwork: "0946621237")
+//        dataAPI(email: inputEmail.text! as String,passwork: inputPass.text! as String)
+        dataAPI(email: "phamtuannd200997@gmail.com",passwork: "0946621237")
     }
     
 }

@@ -24,7 +24,8 @@ class ProducerViewController: UIViewController,UITableViewDelegate,UITableViewDa
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "ListProducerTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "ListProducerTableViewCell")
-//        tableView.backgroundColor = UIColor.white.cgColor
+        navigationItem.backBarButtonItem = UIBarButtonItem(
+            title: "", style: .plain, target: nil, action: nil)
         dataAPI()
         // Do any additional setup after loading the view.
     }
@@ -79,6 +80,10 @@ class ProducerViewController: UIViewController,UITableViewDelegate,UITableViewDa
         cell.avaProducer.image = UIImage(named: "aaa.jpg")
         return cell
     }
+
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ProductViewController") as? ProductViewController
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
 }

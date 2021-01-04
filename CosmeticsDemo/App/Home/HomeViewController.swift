@@ -32,7 +32,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     //    @IBOutlet weak var searchView: UIView!
     var data = [
         FeatureItem(icon: "icSpCate.png", title: "Categories"),
-        FeatureItem(icon: "icSpDeals.png", title: "Deals"),
+        FeatureItem(icon: "icSpDeals.png", title: "Products"),
         FeatureItem(icon: "icSpFaqs.png", title: "Faqs"),
         FeatureItem(icon: "icSpGifts.png", title: "Gifts"),
         FeatureItem(icon: "icSpKazza.png", title: "Kazza"),
@@ -94,6 +94,10 @@ extension HomeViewController {
 //            let item = countries[indexPath.row]
 //            vc?.titleParam = item.name ?? ""
         }
+        if(indexPath.row == 1) {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "ProductViewController") as? ProductViewController
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
     }
     
 }
@@ -110,5 +114,11 @@ extension HomeViewController : UITableViewDelegate,UITableViewDataSource {
         cell.price.text = dataProduct[indexPath.row].price
         cell.star = dataProduct[indexPath.row].star
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ProductDetailViewController") as?
+            ProductDetailViewController
+        self.navigationController?.pushViewController(vc!, animated: true)
+        
     }
 }
