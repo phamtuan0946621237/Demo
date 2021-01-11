@@ -8,20 +8,59 @@
 import UIKit
 
 class CategoriesViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
-
-    var hello : [CategoriesItem] = []
+    // variable
+    var categoriesData : [CategoriesItem] = []
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var viewFeature: UIView!
+    
+    // lifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewFeature.layer.cornerRadius = 24
+        buildView()
+        dataAPI()
+    }
+    
+    // view
+    func buildView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.layer.cornerRadius = 24
         tableView.register(UINib(nibName: "CategoriesTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "CategoriesTableViewCell")
-        dataAPI()
-        // Do any additional setup after loading the view.
+        viewFeature.layer.cornerRadius = 24
+        tableView.layer.cornerRadius = 24
+        navigationItem.backBarButtonItem = UIBarButtonItem(
+            title: "", style: .plain, target: nil, action: nil)
     }
+}
+
+// TableView
+extension CategoriesViewController {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return categoriesData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoriesTableViewCell",for: indexPath) as! CategoriesTableViewCell
+        let categoriesObj = categoriesData[indexPath.row]
+        cell.name.text = categoriesObj.name
+        cell.time.text = categoriesObj.time
+//        cell.icon.image = UIImage(named: "tuhai.jpg")
+        if let imageUrl =  categoriesObj.icon {
+            cell.icon.sd_setImage(with: URL(string: imageUrl), completed: nil)
+        }
+        return cell
+        
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ProductViewController") as? ProductViewController
+        self.navigationController?.pushViewController(vc!, animated: true)
+        let categoriesObj = categoriesData[indexPath.row]
+        vc?.idFilter = categoriesObj.idCategory
+        vc?.type = "categories"
+    }
+}
+
+// fetch API
+extension CategoriesViewController {
     func dataAPI() {
         let parameters : [String : String]? = nil
         let service = Connect()
@@ -39,12 +78,13 @@ class CategoriesViewController: UIViewController,UITableViewDelegate, UITableVie
                             categoriesObj.name = obj["name"] as? String
 //                            categoriesObj.icon = "haitu.jpg"
                             categoriesObj.time = obj["created_at"] as? String
-                            self!.hello.append(categoriesObj)
+                            categoriesObj.icon = obj["images"] as? String
+                            categoriesObj.idCategory = obj["id"] as? Int
+                            self!.categoriesData.append(categoriesObj)
                         }
                         self?.tableView.reloadData()
                     }
                 }
-//                print("trademark : ",data!["data"] as! [String : Any])
                 break;
             case false :
                 
@@ -53,32 +93,5 @@ class CategoriesViewController: UIViewController,UITableViewDelegate, UITableVie
                  break
             }
     }
-
 }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return hello.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoriesTableViewCell",for: indexPath) as! CategoriesTableViewCell
-        let categoriesObj = hello[indexPath.row]
-        cell.name.text = categoriesObj.name
-        cell.time.text = categoriesObj.time
-        cell.icon.image = UIImage(named: "tuhai.jpg")
-//        if let imageUrl = pokemonObj.imageUrl {
-//            cell.avatarImageView.sd_setImage(with: URL(string: imageUrl), completed: nil)
-//        }
-        return cell
-        
-    }
 }

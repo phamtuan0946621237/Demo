@@ -17,5 +17,7 @@ target 'CosmeticsDemo' do
   end
 pod 'Alamofire', '~> 5.2'
 pod 'CardSlider'
+pod 'SDWebImage', :modular_headers => true
+
 
 end

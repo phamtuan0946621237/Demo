@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 struct FeatureItem {
     var icon : String
@@ -19,22 +20,17 @@ struct DataTypeItem {
 }
 class HomeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     @IBOutlet weak var scrollviewFeature: UICollectionView!
+    var product : [ProductItem] = []
     let defaults = UserDefaults.standard
-    let dataProduct = [
-        DataTypeItem(icon: "tuhai.jpg", name: "Son 3ce", price: "300.000 vnd",star: 4),
-        DataTypeItem(icon: "tuhai.jpg", name: "Son 3ce", price: "300.000 vnd",star: 5),
-        DataTypeItem(icon: "tuhai.jpg", name: "Son 3ce", price: "300.000 vnd",star: 1),
-        DataTypeItem(icon: "tuhai.jpg", name: "Son 3ce", price: "300.000 vnd",star: 5),
-    ]
-    
+   
     @IBOutlet weak var viewContainerSearch: UIView!
     @IBOutlet weak var tableView: UITableView!
     //    @IBOutlet weak var searchView: UIView!
     var data = [
         FeatureItem(icon: "icSpCate.png", title: "Categories"),
         FeatureItem(icon: "icSpDeals.png", title: "Products"),
-        FeatureItem(icon: "icSpFaqs.png", title: "Faqs"),
-        FeatureItem(icon: "icSpGifts.png", title: "Gifts"),
+        FeatureItem(icon: "icSpFaqs.png", title: "Producer"),
+        FeatureItem(icon: "icSpGifts.png", title: "Notification"),
         FeatureItem(icon: "icSpKazza.png", title: "Kazza"),
         FeatureItem(icon: "icSpServices.png", title: "Services"),
         FeatureItem(icon: "icSpVip.png", title: "Vip"),
@@ -58,9 +54,45 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         imageBanner.layer.cornerRadius = 20
         scrollviewFeature.showsHorizontalScrollIndicator = false
         tableView.register(UINib(nibName: "ListProductTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "ListProductTableViewCell")
+        dataAPI()
+//        tableView.
         // Do any additional setup after loading the view.
     }
-    
+    func dataAPI() {
+        let parameters : [String : String]? = nil
+        let service = Connect()
+        service.fetchGet(endPoint: "product",token : nil,parram :parameters)
+        service.completionHandler {
+            [weak self] (data) in
+            switch data?["success"] as! Bool {
+            case true :
+//                let lll = data?["data"] as! [String : Any]
+                print("data : ",data!["data"] as! [[String : Any]] )
+                if(data!["data"] != nil) {
+                    if let productArr = data!["data"] as? [[String : Any]] {
+                        for obj in productArr {
+                            let productObj = ProductItem()
+                            productObj.name = obj["name"] as? String
+                            productObj.price = obj["price"] as? String
+                            productObj.icon = obj["images"] as? String
+                            productObj.description = obj["description"] as? String
+                            productObj.description = obj["description"] as? String
+                            productObj.idPro = obj["id"] as? Int
+                            productObj.star = obj["star"] as? Int
+                            self!.product.append(productObj)
+                        }
+                        self?.tableView.reloadData()
+                    }
+                }
+                break;
+            case false :
+                
+                break;
+            default :
+                 break
+            }
+    }
+}
 
     /*
     // MARK: - Navigation
@@ -97,28 +129,42 @@ extension HomeViewController {
         if(indexPath.row == 1) {
             let vc = storyboard?.instantiateViewController(withIdentifier: "ProductViewController") as? ProductViewController
             self.navigationController?.pushViewController(vc!, animated: true)
+            vc?.type = "home"
         }
+        if(indexPath.row == 2) {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "ProducerViewController") as? ProducerViewController
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
+        if(indexPath.row == 3) {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "NotificationViewController") as? NotificationViewController
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
+        
     }
     
 }
 
 extension HomeViewController : UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataProduct.count
+        return product.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListProductTableViewCell", for: indexPath) as! ListProductTableViewCell
-        cell.name.text = dataProduct[indexPath.row].name
-        cell.icon.image = UIImage(named: dataProduct[indexPath.row].icon)
-        cell.price.text = dataProduct[indexPath.row].price
-        cell.star = dataProduct[indexPath.row].star
+        cell.name.text = product[indexPath.row].name
+
+        cell.price.text = product[indexPath.row].price
+        cell.describle.text = product[indexPath.row].description
+        if let imageUrl = product[indexPath.row].icon {
+            cell.icon.sd_setImage(with: URL(string: imageUrl), completed: nil)
+        }
+        cell.setStar(starNumber: product[indexPath.row].star!) // truỳen tham só xuôi
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "ProductDetailViewController") as?
             ProductDetailViewController
         self.navigationController?.pushViewController(vc!, animated: true)
-        
+        vc?.idProduct = product[indexPath.row].idPro!
     }
 }

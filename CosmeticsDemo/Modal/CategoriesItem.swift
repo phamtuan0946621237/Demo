@@ -11,4 +11,5 @@ class CategoriesItem {
     var name : String?
     var time : String?
     var icon : String?
+    var idCategory : Int?
 }

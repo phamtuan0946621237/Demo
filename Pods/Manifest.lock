@@ -1,20 +1,26 @@
 PODS:
   - Alamofire (5.4.1)
   - CardSlider (0.1.0)
+  - SDWebImage (5.10.1):
+    - SDWebImage/Core (= 5.10.1)
+  - SDWebImage/Core (5.10.1)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
   - CardSlider
+  - SDWebImage
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - CardSlider
+    - SDWebImage
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   CardSlider: 0a8f5f17f5a76701771794b07fdaeddc512358c8
+  SDWebImage: f66a16b95183b92ed6b965ad21d33167bc07612d
 
-PODFILE CHECKSUM: a5c81c8406281feb7bdc1a391f440a1ad40d015d
+PODFILE CHECKSUM: 01e21530844ef3f86524fc5ad7dbcd992ed994c6
 
 COCOAPODS: 1.9.3

@@ -31,7 +31,7 @@ class Connect {
     func completionHandler(callBack : @escaping ResCallback) {
         self.callBack = callBack
     }
-    func fetchPost(endPoint : String,token : String?,parram : [String: String]?) {
+    func fetchPost(endPoint : String,token : String?,parram : [String: Any]?) {
         AF.request(self.url + endPoint,method: .post,parameters: parram , encoding: URLEncoding.default,headers: nil,interceptor: nil).responseJSON { (response) in
             if let jsonObj = response.value as? [String : Any] {
                                 self.callBack?(jsonObj as? [String : Any] )
@@ -39,10 +39,9 @@ class Connect {
         }
     }
     
-    func fetchGet(endPoint : String,token : String?,parram : [String: String]?) {
+    func fetchGet(endPoint : String,token : String?,parram : [String: Any]?) {
         AF.request(self.url + endPoint,method: .get,parameters: parram , encoding: URLEncoding.default,headers: nil,interceptor: nil).responseJSON { (response) in
             if let jsonObj = response.value as? [String : Any] {
-                print("fooeflwe : ",jsonObj)
                                 self.callBack?(jsonObj as? [String : Any] )
             }
         }

@@ -7,6 +7,7 @@
 
 import UIKit
 import CardSlider
+import SDWebImage
 struct WeatherItem {
     var time : String?
 }
@@ -37,7 +38,7 @@ class TrademarkViewController: UIViewController,UICollectionViewDelegate,UIColle
         WeatherItem(time: "6 pm"),
         WeatherItem(time: "9 pm"),
     ]
-    var dataTradeMark : [[String : Any]] = []
+    var dataTradeMark : [TradeMarkItem] = []
     @IBOutlet weak var banner: UIImageView!
     override func viewDidLoad() {
         collectionVIew.dataSource = self
@@ -79,9 +80,19 @@ class TrademarkViewController: UIViewController,UICollectionViewDelegate,UIColle
 //                let lll = data?["data"] as! [String : Any]
                 print("data : ",data!["data"] as! [[String : Any]] )
                 if(data!["data"] != nil) {
-                    self?.dataTradeMark = (data!["data"] as! [[String : Any]])
-                    print(self!.dataTradeMark)
-                    self?.collectionVIew.reloadData()
+//                    self?.dataTradeMark = (data!["data"] as! [[String : Any]])
+//                    print(self!.dataTradeMark)
+                    if let tradeMarkArr = data!["data"] as? [[String : Any]] {
+                        for obj in tradeMarkArr {
+                            let tradeMarkObj = TradeMarkItem()
+                            tradeMarkObj.name = obj["name"] as? String
+                            tradeMarkObj.icon = obj["images"] as? String
+                            tradeMarkObj.idTradeMark = obj["id"] as? Int
+                            self!.dataTradeMark.append(tradeMarkObj)
+                        }
+                        self?.collectionVIew.reloadData()
+                    }
+                    
                 }
 //                print("trademark : ",data!["data"] as! [String : Any])
                 break;
@@ -107,21 +118,27 @@ extension TrademarkViewController {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TradeMarkCollectionViewCell", for: indexPath) as! TradeMarkCollectionViewCell
-//        if dataTradeMark != nil {
             let item = dataTradeMark[indexPath.row]
-        if (indexPath.row == 1) {
-            cell.icon.image = UIImage(named: "tuhai.jpg")
+
+        cell.titleTradeMark.setTitle(dataTradeMark[indexPath.row].name, for: .normal) 
+
+        if let imageUrl = dataTradeMark[indexPath.row].icon {
+            cell.icon.sd_setImage(with: URL(string: imageUrl), completed: nil)
         }
-        cell.icon.image = UIImage(named: "cochacyeuladay.jpg")
-        cell.titleTradeMark.text = (item["name"] as! String)
-//        }
+        cell.rowIndex = indexPath.row
+        cell.setHandle(handle: {(index : Int) in
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProductViewController") as? ProductViewController
+            self.navigationController?.pushViewController(vc!, animated: true)
+            let categoriesObj = self.dataTradeMark[index]
+            vc?.idFilter = categoriesObj.idTradeMark
+            vc?.type = "tradeMark"
+        })
+        
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
-            let vc = storyboard?.instantiateViewController(withIdentifier: "ProductViewController") as? ProductViewController
-            self.navigationController?.pushViewController(vc!, animated: true)
-        
+        print("hello",indexPath.row)
+
     }
     
     

@@ -91,10 +91,3 @@ extension LoginViewController {
         view.endEditing(true)
     }
 }
-
-
-//@IBAction func enter(_ sender: Any) {
-//        if textField.text != "" {
-//
-//        }
-//    }

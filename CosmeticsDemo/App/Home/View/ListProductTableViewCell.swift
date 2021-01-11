@@ -9,14 +9,16 @@ import UIKit
 
 class ListProductTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var describle: UILabel!
     @IBOutlet weak var starView: UIView!
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var layoutView: UIView!
-    
+    var arrImageView = [UIImageView]()
+
     let instar : Int = 5
-    var star : Int = 1
+    var star : Int = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,7 +30,6 @@ class ListProductTableViewCell: UITableViewCell {
         starStackView.alignment = .center
         starStackView.spacing = 2
         starStackView.tag = 5007
-        var arrImageView = [UIImageView]()
         
         for i in 0..<self.instar{
             let imageView = UIImageView()
@@ -39,6 +40,7 @@ class ListProductTableViewCell: UITableViewCell {
             starStackView.addArrangedSubview(imageView)
             arrImageView.append(imageView)
         }
+        
         starStackView.translatesAutoresizingMaskIntoConstraints = false
         starView.addSubview(starStackView)
         starStackView.topAnchor.constraint(equalTo: starView.topAnchor,constant: 0).isActive = true
@@ -54,6 +56,13 @@ class ListProductTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setStar(starNumber : Int) {
+        self.star = starNumber
+        for i in 0..<self.instar{
+            updateStar(index: i, imageView: arrImageView[i],star: self.star)
+        }
+       
+    }
 //    func
 //    func _buildStarView(starNumber : Int) -> Int {
 //        self.star = starNumber

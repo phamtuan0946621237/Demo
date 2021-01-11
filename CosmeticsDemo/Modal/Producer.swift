@@ -13,4 +13,5 @@ class ProducerItem {
     var ava : String?
     var address : String?
     var phone : String?
+    var idProducer : Int?
 }

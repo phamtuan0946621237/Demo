@@ -11,4 +11,7 @@ class ProductItem {
     var name : String?
     var icon : String?
     var price : String?
+    var description : String?
+    var idPro : Int?
+    var star : Int?
 }

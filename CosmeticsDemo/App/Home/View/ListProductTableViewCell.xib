@@ -39,31 +39,66 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czw-rX-rSL">
-                                                <rect key="frame" x="0.0" y="45" width="152" height="17"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <color key="textColor" systemColor="systemGreenColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IcO-tt-zFI">
-                                                <rect key="frame" x="0.0" y="76" width="114" height="23"/>
+                                                <rect key="frame" x="0.0" y="84" width="52" height="15"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="23" id="tJp-Xv-02G"/>
+                                                    <constraint firstAttribute="height" constant="15" id="tJp-Xv-02G"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Describle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lBN-W3-Az8">
+                                                <rect key="frame" x="0.0" y="62" width="152" height="18"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="18" id="EnB-SS-8qs"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                <color key="textColor" red="0.64206486939999996" green="0.6691917181" blue="0.72006982559999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W8G-PJ-ybd">
+                                                <rect key="frame" x="0.0" y="37" width="152" height="18"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YYt-Pi-dwV">
+                                                        <rect key="frame" x="0.0" y="0.5" width="44.5" height="17"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="44.5" id="nmm-sV-2Zi"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czw-rX-rSL">
+                                                        <rect key="frame" x="44.5" y="0.5" width="107.5" height="17"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <color key="textColor" systemColor="systemGreenColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="YYt-Pi-dwV" firstAttribute="leading" secondItem="W8G-PJ-ybd" secondAttribute="leading" id="1bY-5D-xri"/>
+                                                    <constraint firstAttribute="height" constant="18" id="8eJ-WK-03K"/>
+                                                    <constraint firstItem="czw-rX-rSL" firstAttribute="centerY" secondItem="W8G-PJ-ybd" secondAttribute="centerY" id="E3R-O5-91u"/>
+                                                    <constraint firstAttribute="trailing" secondItem="czw-rX-rSL" secondAttribute="trailing" id="ITE-Qa-oqL"/>
+                                                    <constraint firstItem="YYt-Pi-dwV" firstAttribute="centerY" secondItem="W8G-PJ-ybd" secondAttribute="centerY" id="TT4-Qt-Bau"/>
+                                                    <constraint firstItem="czw-rX-rSL" firstAttribute="leading" secondItem="YYt-Pi-dwV" secondAttribute="trailing" id="uHa-xm-iJf"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="czw-rX-rSL" secondAttribute="trailing" id="6ee-gx-b3u"/>
-                                            <constraint firstItem="czw-rX-rSL" firstAttribute="top" secondItem="G7M-hP-8ud" secondAttribute="bottom" constant="16" id="HTK-en-LrW"/>
+                                            <constraint firstAttribute="trailing" secondItem="lBN-W3-Az8" secondAttribute="trailing" id="8I5-E7-fLs"/>
                                             <constraint firstItem="G7M-hP-8ud" firstAttribute="leading" secondItem="mZX-Hi-Diq" secondAttribute="leading" id="JJv-uy-dwc"/>
-                                            <constraint firstItem="czw-rX-rSL" firstAttribute="leading" secondItem="mZX-Hi-Diq" secondAttribute="leading" id="Q6v-HO-x6n"/>
                                             <constraint firstAttribute="bottom" secondItem="IcO-tt-zFI" secondAttribute="bottom" constant="5" id="RIS-Um-O2O"/>
+                                            <constraint firstItem="lBN-W3-Az8" firstAttribute="leading" secondItem="mZX-Hi-Diq" secondAttribute="leading" id="Yrc-Ai-E6j"/>
+                                            <constraint firstAttribute="trailing" secondItem="W8G-PJ-ybd" secondAttribute="trailing" id="Z4y-O8-AGd"/>
                                             <constraint firstItem="G7M-hP-8ud" firstAttribute="top" secondItem="mZX-Hi-Diq" secondAttribute="top" constant="5" id="ciK-yT-sP0"/>
                                             <constraint firstItem="IcO-tt-zFI" firstAttribute="leading" secondItem="mZX-Hi-Diq" secondAttribute="leading" id="ecu-re-8jj"/>
+                                            <constraint firstItem="W8G-PJ-ybd" firstAttribute="leading" secondItem="mZX-Hi-Diq" secondAttribute="leading" id="f2M-KQ-Jex"/>
                                             <constraint firstAttribute="trailing" secondItem="G7M-hP-8ud" secondAttribute="trailing" id="mCU-6Y-P82"/>
-                                            <constraint firstAttribute="trailing" secondItem="IcO-tt-zFI" secondAttribute="trailing" constant="38" id="zDC-oB-ONc"/>
+                                            <constraint firstItem="W8G-PJ-ybd" firstAttribute="top" secondItem="G7M-hP-8ud" secondAttribute="bottom" constant="8" id="vLr-YB-vYT"/>
+                                            <constraint firstAttribute="bottom" secondItem="lBN-W3-Az8" secondAttribute="bottom" constant="24" id="xSM-L9-tAK"/>
+                                            <constraint firstAttribute="trailing" secondItem="IcO-tt-zFI" secondAttribute="trailing" constant="100" id="zDC-oB-ONc"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -99,6 +134,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="describle" destination="lBN-W3-Az8" id="NZi-Bc-lpU"/>
                 <outlet property="icon" destination="cVr-AP-DgS" id="2ik-eF-t30"/>
                 <outlet property="layoutView" destination="1KN-ck-W1p" id="8gb-KY-bQg"/>
                 <outlet property="name" destination="G7M-hP-8ud" id="cQm-ux-UXg"/>

@@ -50,6 +50,8 @@ class ProducerViewController: UIViewController,UITableViewDelegate,UITableViewDa
                             producerObj.address = obj["address"] as? String
                             producerObj.ava = obj["avatar"] as? String
                             producerObj.phone = obj["phone"] as? String
+                            producerObj.idProducer = obj["id"] as? Int
+                            
                             self!.producer.append(producerObj)
                         }
                         self?.tableView.reloadData()
@@ -85,5 +87,8 @@ class ProducerViewController: UIViewController,UITableViewDelegate,UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "ProductViewController") as? ProductViewController
         self.navigationController?.pushViewController(vc!, animated: true)
+        let producerObj = producer[indexPath.row]
+        vc?.idFilter = producerObj.idProducer
+        vc?.type = "producer"
     }
 }
